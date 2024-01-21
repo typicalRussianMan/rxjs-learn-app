@@ -31,9 +31,9 @@ export class MapMarble extends Marble<IMapMarbleConfiguration> {
   }
 
   /** @inheritdoc */
-  protected override addInput(marble: Marble): void {
+  protected override _addInput(marble: Marble): void {
     if (this.inputs.length > 0) throw new MarbleInputOverflowError();
 
-    super.addInput(marble);
+    super._addInput(marble);
   }
 }

@@ -62,8 +62,8 @@ export abstract class Marble<TConf extends object = {}> {
    * @param marble Marble.
    */
   public addOutput(marble: Marble): void {
-    this.outputs.push(marble);
-    marble.addInput(this);
+    this._addOutput(marble);
+    marble._addInput(this);
   }
 
   /**
@@ -71,45 +71,32 @@ export abstract class Marble<TConf extends object = {}> {
    * @param marble Marble.
    */
   public removeOutput(marble: Marble): void {
-    const index = this.outputs.indexOf(marble);
-
-    if (index === -1) {
-      return;
-    }
-
-    this.outputs[index].removeInput(this);
-
-    this.outputs.splice(index, 1);
+    this._removeOutput(marble);
+    marble._removeInput(marble);
   }
 
   /** Removes the output Marble by index.  */
   public removeOutputByIndex(index: number): void {
-    this.outputs[index].removeInput(this);
-    this.outputs.splice(index, 1);
+    this.outputs[index]._removeInput(this);
+    this._removeOutputById(index);
   }
 
-  protected addInput(marble: Marble): void {
-    this.inputs.push(marble);
-    this.rebuildObservable()
+  public addInput(marble: Marble): void {
+    this._addInput(marble);
+    marble._addOutput(marble);
   }
 
-  protected removeInput(marble: Marble): void {
-    const index = this.inputs.indexOf(marble);
-
-    if (index === -1) {
-      return;
-    }
-
-    this.inputs.splice(index, 1);
-    this.rebuildObservable()
+  public removeInput(marble: Marble): void {
+    this._removeInput(marble);
+    marble._addOutput(this);
   }
 
-  protected removeInputByIndex(index: number): void {
-    this.inputs.splice(index, 1);
-    this.rebuildObservable()
+  public removeInputByIndex(index: number): void {
+    this.inputs[index]._removeOutput(this);
+    this._removeInputById(index);
   }
 
-  protected rebuildObservable() {
+  public rebuildObservable() {
     this.currentObservable = this.buildObservable(this.inputs);
     this.outputs.forEach(marble => marble.rebuildObservable());
   }
@@ -120,6 +107,45 @@ export abstract class Marble<TConf extends object = {}> {
       ...newConfig,
     };
 
+    this.rebuildObservable();
+  }
+
+  protected _addOutput(marble: Marble): void {
+    this.outputs.push(marble);
+  }
+
+  protected _removeOutput(marble: Marble): void {
+    const index = this.outputs.indexOf(marble);
+
+    if (index === -1) {
+      return;
+    }
+
+    this.outputs.splice(index, 1);
+  }
+
+  protected _removeOutputById(index: number): void {
+    this.outputs.splice(index, 1);
+  }
+
+  protected _addInput(marble: Marble): void {
+    this.inputs.push(marble);
+    this.rebuildObservable();
+  }
+
+  protected _removeInput(marble: Marble): void {
+    const index = this.inputs.indexOf(marble);
+
+    if (index === -1) {
+      return;
+    }
+
+    this.inputs.splice(index, 1);
+    this.rebuildObservable();
+  }
+
+  protected _removeInputById(index: number): void {
+    this.inputs.splice(index, 1);
     this.rebuildObservable();
   }
 }

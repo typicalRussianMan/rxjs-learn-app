@@ -5,17 +5,17 @@ import { Marble } from "./marble";
 export abstract class InputOnlyMarble<TConf extends object = {}> extends Marble<TConf> {
 
   /** @inheritdoc */
-  public override addOutput(_marble: Marble): void {
+  protected override _addOutput(_marble: Marble): void {
     throw new InputOnlyMarbleError();
   }
 
   /** @inheritdoc */
-  public override removeOutput(_marble: Marble): void {
+  protected override _removeOutput(_marble: Marble): void {
     throw new InputOnlyMarbleError();
   }
 
   /** @inheritdoc */
-  public override removeOutputByIndex(_index: number): void {
+  protected override _removeOutputById(_index: number): void {
     throw new InputOnlyMarbleError();
   }
 }
