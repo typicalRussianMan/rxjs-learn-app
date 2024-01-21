@@ -19,12 +19,12 @@ export const data = {
 // Intervals -> combineLatest.
 data.i1.addOutput(data.cl); // interval ->
 data.i2.addOutput(data.cl); //            combineLatest -> logger1.
-data.cl.addOutput(data.f1); // interval ->
+data.f1.addInput(data.cl); // interval ->
 
 data.i1.addOutput(data.mg); // interval ->
 data.i2.addOutput(data.mg); //            merge -> *2 -> logger2.
 data.mg.addOutput(data.db); // interval ->
-data.db.addOutput(data.f2);
+data.f2.addInput(data.db);
 
 @Component({
   selector: 'app-root',
