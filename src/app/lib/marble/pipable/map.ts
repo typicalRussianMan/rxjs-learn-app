@@ -1,6 +1,7 @@
 import { NEVER, map } from "rxjs";
 import { Marble } from "../basic-marbles/marble";
 import { MarbleInputOverflowError } from "../errors/errors";
+import { neverIfEmptyInputs } from "../utils/never-if-empy-inputs";
 
 type MapCallback = (value: any) => any;
 
@@ -19,13 +20,9 @@ export class MapMarble extends Marble<IMapMarbleConfiguration> {
   };
 
   public constructor(mapFn: MapCallback) {
-    super(inputs => {
-      if (inputs.length === 0) return NEVER;
-
-      return inputs[0].currentObservable.pipe(
-        map(val => this.configuration.callback(val)),
-      );
-    });
+    super(neverIfEmptyInputs(inputs => inputs[0].currentObservable.pipe(
+      map(val => this.configuration.callback(val)),
+    )));
 
     this.modifyConfig({ callback: mapFn });
   }

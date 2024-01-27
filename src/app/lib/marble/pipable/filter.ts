@@ -1,6 +1,7 @@
 import { NEVER, filter, map } from "rxjs";
 import { Marble } from "../basic-marbles/marble";
 import { MarbleInputOverflowError } from "../errors/errors";
+import { neverIfEmptyInputs } from "../utils/never-if-empy-inputs";
 
 type FilterCallback = (value: any) => boolean;
 
@@ -19,13 +20,9 @@ export class FilterMarble extends Marble<IFilterMarbleConfiguration> {
   };
 
   public constructor(predicate: FilterCallback) {
-    super(inputs => {
-      if (inputs.length === 0) return NEVER;
-
-      return inputs[0].currentObservable.pipe(
-        filter(val => this.configuration.predicate(val)),
-      );
-    });
+    super(neverIfEmptyInputs(inputs => inputs[0].currentObservable.pipe(
+      filter(val => this.configuration.predicate(val)),
+    )));
 
     this.modifyConfig({ predicate });
   }

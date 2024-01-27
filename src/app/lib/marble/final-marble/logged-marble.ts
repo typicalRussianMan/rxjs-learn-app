@@ -1,5 +1,6 @@
 import { NEVER, tap } from "rxjs";
 import { InputOnlyMarble } from "../basic-marbles/input-only-marble";
+import { neverIfEmptyInputs } from "../utils/never-if-empy-inputs";
 
 interface ILoggedMarbleConfiguration {
 
@@ -15,13 +16,9 @@ export class LoggedMarble extends InputOnlyMarble<ILoggedMarbleConfiguration> {
   };
 
   public constructor(tag: string) {
-    super(inputs => {
-      if (inputs.length < 1) return NEVER;
-
-      return inputs[0].currentObservable.pipe(
-        tap(value => console.log(this.configuration.tag, value))
-      );
-    });
+    super(neverIfEmptyInputs(inputs => inputs[0].currentObservable.pipe(
+      tap(value => console.log(this.configuration.tag, value))
+    )));
 
     this.modifyConfig({ tag });
   }
