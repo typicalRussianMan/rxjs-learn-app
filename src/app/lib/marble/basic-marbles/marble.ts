@@ -1,4 +1,4 @@
-import { NEVER, Observable } from "rxjs";
+import { NEVER, Observable, Observer, Subscription } from "rxjs";
 
 /**
  * Marble class.
@@ -57,19 +57,11 @@ export abstract class Marble<TConf extends object = {}> {
     protected readonly buildObservable: (inputs: Marble[]) => Observable<any>,
   ) {}
 
-  /**
-   * Add output to future observable.
-   * @param marble Marble.
-   */
   public addOutput(marble: Marble): void {
     this._addOutput(marble);
     marble._addInput(this);
   }
 
-  /**
-   * Removes the output Marble of the current Marble and the input Marble of the one to be removed.
-   * @param marble Marble.
-   */
   public removeOutput(marble: Marble): void {
     this._removeOutput(marble);
     marble._removeInput(marble);
@@ -108,6 +100,10 @@ export abstract class Marble<TConf extends object = {}> {
     };
 
     this.rebuildObservable();
+  }
+
+  public subscribe(observerOrNext?: Partial<Observer<any>> | ((value: any) => void) | undefined): Subscription {
+    return this.currentObservable.subscribe(observerOrNext);
   }
 
   protected _addOutput(marble: Marble): void {
