@@ -1,0 +1,6 @@
+@for (task of tasks$ | async; track task.id) {
+  <div>
+    <h2>{{ task.title }} ({{ task.id }})</h2>
+    <div>{{ task.description }}</div>
+  </div>
+}
