@@ -1,6 +1,26 @@
-@for (task of tasks$ | async; track task.id) {
-  <div>
-    <h2>{{ task.title }} ({{ task.id }})</h2>
-    <div>{{ task.description }}</div>
+@for (task of tasks$ | async; track task.id; let index = $index) {
+  <div class="panel">
+    <rla-expansion-panel>
+
+      <ng-container ngProjectAs="title">
+        <div class="panel-title">
+          <span>
+            {{ index + 1 }}: {{ task.title }}
+          </span>
+          <div>
+            <button class="button primary">Play</button>
+            <button class="button accent">About task</button>
+            <button class="button warn">Delete</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container ngProjectAs="expand">
+        <div>
+          {{ task.description }}
+        </div>
+      </ng-container>
+
+    </rla-expansion-panel>
   </div>
 }
