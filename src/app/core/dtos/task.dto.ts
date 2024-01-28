@@ -1,3 +1,5 @@
+import { TaskContentDto } from "./task-content.dto";
+
 /** Task DTO. */
 export interface TaskDto {
 
@@ -8,5 +10,5 @@ export interface TaskDto {
   readonly id: string;
 
   /** Content. */
-  readonly content: string;
+  readonly content: readonly TaskContentDto[];
 }

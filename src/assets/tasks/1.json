@@ -1,5 +1,22 @@
 {
   "name": "Introduction",
   "id": "1",
-  "content": "This task is easy"
+  "content": [
+    {
+      "type": "Text",
+      "text": "Test test 123"
+    },
+    {
+      "type": "Image",
+      "src": "https://perevozka24.ru/img/ck_upload/54587.3.jpg"
+    },
+    {
+      "type": "Text",
+      "text": "Other text"
+    }
+  ],
+  "marbles": [
+    "Interval",
+    "Storage"
+  ]
 }

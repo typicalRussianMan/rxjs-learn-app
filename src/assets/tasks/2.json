@@ -1,5 +1,23 @@
 {
   "name": "Second step",
   "id": "2",
-  "content": "A bit harder"
+  "content": [
+    {
+      "type": "Text",
+      "text": "Test test 123"
+    },
+    {
+      "type": "Image",
+      "src": "https://perevozka24.ru/img/ck_upload/54587.3.jpg"
+    },
+    {
+      "type": "Text",
+      "text": "Other text"
+    }
+  ],
+  "marbles": [
+    "Interval",
+    "Storage",
+    "Map"
+  ]
 }
