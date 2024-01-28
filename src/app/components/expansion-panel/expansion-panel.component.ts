@@ -21,20 +21,26 @@ const CONTROL_ELEMENTS = [
 export class ExpansionPanelComponent {
 
   @ViewChild('panel')
-  protected readonly expansionPanel!: ElementRef<HTMLDivElement>;
+  private readonly expansionPanel!: ElementRef<HTMLDivElement>;
 
-  protected readonly isOpen$ = new BehaviorSubject(false);
+  private readonly isOpen$ = new BehaviorSubject(false);
 
+  /** Opens panel. */
   public open(): void {
     this.isOpen$.next(true);
     this.expansionPanel.nativeElement.classList.add('open');
   }
 
+  /** Closes panel. */
   public close(): void {
     this.isOpen$.next(false);
     this.expansionPanel.nativeElement.classList.remove('open');
   }
 
+  /**
+   * Toggles panel state, prevent action if target is controller e.g. button or input.
+   * @param event Mouse event.
+   */
   public toggle(event: MouseEvent): void {
     if (CONTROL_ELEMENTS.some(element => event.target instanceof element)) {
       return;

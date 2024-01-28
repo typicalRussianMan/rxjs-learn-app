@@ -16,7 +16,7 @@
 
 .header__logo {
   height: 40px;
-  filter: drop-shadow(0 0 4px #fffa);
+  filter: drop-shadow(0 0 4px #fff);
 }
 
 .header__app-name {
