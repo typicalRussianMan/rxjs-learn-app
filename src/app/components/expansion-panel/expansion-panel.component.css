@@ -1,0 +1,13 @@
+.expandable-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s;
+}
+
+.expandable {
+  overflow: hidden;
+}
+
+.panel.open .expandable-container {
+  grid-template-rows: 1fr;
+}

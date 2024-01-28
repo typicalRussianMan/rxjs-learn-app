@@ -1,10 +1,10 @@
 <div class="panel" (click)="toggle($event)" #panel>
-  <div class="title">
+  <div>
     <ng-content select="title" />
   </div>
-  @if (isOpen$ | async) {
-    <div class="expandable-text">
+  <div class="expandable-container">
+    <div class="expandable">
       <ng-content select="expand" />
     </div>
-  }
+  </div>
 </div>

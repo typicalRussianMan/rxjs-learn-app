@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Destroyable } from '../../core/utils/destroyable';
 
@@ -39,7 +39,7 @@ export class ExpansionPanelComponent {
     if (CONTROL_ELEMENTS.some(element => event.target instanceof element)) {
       return;
     }
-    
+
     if (this.isOpen$.value) {
       this.close();
     } else {
