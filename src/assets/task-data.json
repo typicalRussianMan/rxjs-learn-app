@@ -8,5 +8,10 @@
     "title": "Second step",
     "description": "Just test",
     "id": "2"
+  },
+  {
+    "title": "Combine Latest",
+    "description": "Leaning `combineLatest`",
+    "id": "3"
   }
 ]
