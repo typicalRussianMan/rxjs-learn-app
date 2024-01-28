@@ -12,4 +12,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.panel.solved .task-name {
+  text-decoration: line-through;
+  color: var(--color-gray-dark);
 }

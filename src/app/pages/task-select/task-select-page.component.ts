@@ -21,4 +21,12 @@ export class TaskSelectPageComponent {
   protected readonly tasks$: Observable<readonly TaskLite[]> = this.taskService.getTaskList().pipe(
     shareReplay({ refCount: true, bufferSize: 1 }),
   );
+
+  /**
+   * Checks if task solved.
+   * @param id ID.
+   */
+  public isSolved(id: string): Observable<boolean> {
+    return this.taskService.isTaskSolved(id);
+  }
 }

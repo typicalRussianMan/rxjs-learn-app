@@ -1,10 +1,10 @@
 @for (task of tasks$ | async; track task.id; let index = $index) {
-  <div class="panel">
+  <div class="panel" [class.solved]="isSolved(task.id) | async">
     <rla-expansion-panel>
 
       <ng-container ngProjectAs="title">
         <div class="panel-title">
-          <span>
+          <span class="task-name">
             {{ index + 1 }}: {{ task.title }}
           </span>
           <div>
