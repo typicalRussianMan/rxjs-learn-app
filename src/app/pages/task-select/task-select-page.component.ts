@@ -4,6 +4,7 @@ import { TaskLite } from '../../core/models/task-lite';
 import { TaskService } from '../../core/services/task.service';
 import { AsyncPipe } from '@angular/common';
 import { ExpansionPanelComponent } from '../../components/expansion-panel/expansion-panel.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'rla-task-select-page',
@@ -17,6 +18,8 @@ export class TaskSelectPageComponent {
 
   private readonly taskService = inject(TaskService);
 
+  private readonly router = inject(Router);
+
   /** Tasks. */
   protected readonly tasks$: Observable<readonly TaskLite[]> = this.taskService.getTaskList().pipe(
     shareReplay({ refCount: true, bufferSize: 1 }),
@@ -28,5 +31,9 @@ export class TaskSelectPageComponent {
    */
   public isSolved(id: string): Observable<boolean> {
     return this.taskService.isTaskSolved(id);
+  }
+
+  public redirectTo(id: string): void {
+    this.router.navigate(['tasks', id])
   }
 }

@@ -1,0 +1,18 @@
+<div class="full-screen-container">
+
+  <div class="task-info">
+    <div class="app-info">
+      <img class="app-info__img" src="/assets/rx-logo.png" alt="RxJS Logo">
+      <h1 class="app-info__name">RxJS Learn</h1>
+    </div>
+
+    <div class="task-change">
+      <a [routerLink]="['select']" class="link">{{'<< Previous task'}}</a>
+      <a [routerLink]="['select']" class="link">{{'Next task >>'}}</a>
+    </div>
+  </div>
+  @if (task$ | async; as task) {
+    {{ task.name }}
+  }
+
+</div>

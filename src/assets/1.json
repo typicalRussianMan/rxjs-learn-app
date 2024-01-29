@@ -3,6 +3,10 @@
   "id": "1",
   "content": [
     {
+      "type": "Heading",
+      "text": "1 - Introduction"
+    },
+    {
       "type": "Text",
       "text": "Test test 123"
     },

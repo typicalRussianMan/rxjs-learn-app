@@ -30,7 +30,7 @@ export class TaskService {
 
   private readonly taskUrl = new URL('/assets/task-data.json', this.location.origin);
 
-  private readonly taskDetailUrl = new URL('/assets/tasks', this.location.origin);
+  private readonly taskDetailUrl = new URL('/assets/', this.location.origin);
 
   private readonly taskDetailUrlBuilder = (id: string) => new URL(`${id}.json`, this.taskDetailUrl);
 

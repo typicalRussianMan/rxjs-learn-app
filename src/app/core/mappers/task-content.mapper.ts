@@ -23,6 +23,13 @@ export class TaskContentMapper implements IMapperFromDto<TaskContentDto, TaskCon
       };
     }
 
+    if (dto.type === TaskContentTypeDto.Heading) {
+      return {
+        type: TaskContentType.Heading,
+        text: dto.text,
+      }
+    }
+
     throw new Error(`Unknown content type: ${(dto as any).type}`);
   }
 }

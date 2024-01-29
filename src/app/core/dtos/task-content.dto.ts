@@ -2,6 +2,7 @@
 export enum TaskContentTypeDto {
   Text = 'Text',
   Image = 'Image',
+  Heading = 'Heading',
 }
 
 /** Text task content. */
@@ -24,4 +25,16 @@ export interface ImageTaskContentDto {
   readonly src: string;
 }
 
-export type TaskContentDto = TextTaskContentDto | ImageTaskContentDto;
+/** Heading task content. */
+export interface HeadingTaskContentDto {
+
+  /** Type. */
+  readonly type: TaskContentTypeDto.Heading;
+
+  /** Text. */
+  readonly text: string;
+}
+
+export type TaskContentDto = TextTaskContentDto
+  | ImageTaskContentDto
+  | HeadingTaskContentDto;

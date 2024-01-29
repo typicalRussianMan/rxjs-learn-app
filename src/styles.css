@@ -82,3 +82,8 @@ button.button.icon {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 }
+
+a.link, a.link:active, a.link:visited {
+  color: var(--color-primary);
+  font-size: var(--font-s);
+}
