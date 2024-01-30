@@ -4,10 +4,11 @@ import { Task } from "../models/task";
 import { IMapperFromDto } from "./mapper";
 import { TaskContentMapper } from "./task-content.mapper";
 
+/** Task mapper. */
 @Injectable({ providedIn: 'root' })
 export class TaskMapper implements IMapperFromDto<TaskDto, Task> {
 
-  private readonly taskContentMapper = inject(TaskContentMapper)
+  private readonly taskContentMapper = inject(TaskContentMapper);
 
   /** @inheritdoc */
   public fromDto(dto: TaskDto): Task {
@@ -15,6 +16,8 @@ export class TaskMapper implements IMapperFromDto<TaskDto, Task> {
       content: dto.content.map(this.taskContentMapper.fromDto),
       id: dto.id,
       name: dto.name,
-    })
+      nextTaskId: dto.nextTaskId ?? null,
+      previousTaskId: dto.previousTaskId ?? null,
+    });
   }
 }

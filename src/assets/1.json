@@ -8,7 +8,7 @@
     },
     {
       "type": "Text",
-      "text": "Test test 123"
+      "text": "Test test 123 multiline text qwe 123 gfsdfgl qjwerj j, sdfgjhnsl, sdfgslsn hgiruiw2 5tt34"
     },
     {
       "type": "Image",
@@ -22,5 +22,6 @@
   "marbles": [
     "Interval",
     "Storage"
-  ]
+  ],
+  "nextTaskId": "2"
 }

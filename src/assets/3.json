@@ -1,0 +1,27 @@
+{
+  "name": "Combine Latest",
+  "id": "3",
+  "content": [
+    {
+      "type": "Heading",
+      "text": "3 - Combine Latest"
+    },
+    {
+      "type": "Text",
+      "text": "In this task we learn combine latest operator"
+    },
+    {
+      "type": "Image",
+      "src": "https://reactivex.io/rxjs/img/combineLatest.png"
+    },
+    {
+      "type": "Text",
+      "text": "Other text"
+    }
+  ],
+  "marbles": [
+    "Interval",
+    "Storage"
+  ],
+  "previousTaskId": "2"
+}
