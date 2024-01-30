@@ -1,0 +1,15 @@
+@for (item of taskContent; track $index) {
+
+  @if (item.type === TaskContentType.Text) {
+    <div class="content-text">
+      {{ item.text }}
+    </div>
+  } @else if (item.type === TaskContentType.Heading) {
+    <h2 class="content-heading">
+      {{ item.text }}
+    </h2>
+  } @else {
+    <img class="content-image" [src]="item.src" />
+  }
+  
+}

@@ -3,12 +3,16 @@
   "id": "2",
   "content": [
     {
+      "type": "Heading",
+      "text": "2 - What the fuck is this"
+    },
+    {
       "type": "Text",
-      "text": "Test test 123"
+      "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
     {
       "type": "Image",
-      "src": "https://perevozka24.ru/img/ck_upload/54587.3.jpg"
+      "src": "https://sun9-78.userapi.com/impg/wGCl-WwRzScH_yBwSCQreovF7JxpcC3ckVjJWw/sQ9hKwfXG80.jpg?size=1024x1024&quality=96&sign=0eeb95d50a8c05b04b1d30bf1dc34a89&type=album"
     },
     {
       "type": "Text",
@@ -19,5 +23,7 @@
     "Interval",
     "Storage",
     "Map"
-  ]
+  ],
+  "nextTaskId": "3",
+  "previousTaskId": "1"
 }
