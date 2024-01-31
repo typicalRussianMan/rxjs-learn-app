@@ -8,7 +8,10 @@
             {{ index + 1 }}: {{ task.title }}
           </span>
           <div>
-            <button class="button primary" (click)="redirectTo(task.id)">
+            <button
+              class="button primary"
+              (click)="redirectTo(task.id)"
+              type="button">
               Open Level
             </button>
           </div>

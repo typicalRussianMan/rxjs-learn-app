@@ -1,15 +1,14 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Destroyable } from '../../core/utils/destroyable';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 
 const CONTROL_ELEMENTS = [
   HTMLButtonElement,
   HTMLInputElement,
   HTMLLinkElement,
-]
+];
 
-@Destroyable()
+/** Expansion panel component. */
 @Component({
   selector: 'rla-expansion-panel',
   standalone: true,
@@ -38,15 +37,15 @@ export class ExpansionPanelComponent {
   }
 
   /**
-   * Toggles panel state, prevent action if target is controller e.g. button or input.
+   * Toggles panel state, prevent action if target is controller (button or input).
    * @param event Mouse event.
    */
-  public toggle(event: MouseEvent): void {
+  public async toggle(event: MouseEvent): Promise<void> {
     if (CONTROL_ELEMENTS.some(element => event.target instanceof element)) {
       return;
     }
 
-    if (this.isOpen$.value) {
+    if (await firstValueFrom(this.isOpen$)) {
       this.close();
     } else {
       this.open();

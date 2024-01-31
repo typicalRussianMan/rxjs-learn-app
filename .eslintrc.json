@@ -1,0 +1,138 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/*/src/index.html"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "@saritasa/eslint-config-saritasa"
+      ],
+      "plugins": ["rxjs"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "ClassDeclaration:not(:has(Decorator[expression.callee.name='Destroyable'])) CallExpression[callee.name='takeUntilDestroy']:has(ThisExpression)",
+            "message": "You must add '@Destroyable()' decorator to use 'takeUntilDestroy(this)'"
+          },
+          {
+            "selector": "ClassDeclaration:has(Decorator[expression.callee.name='Destroyable']):not(:has(CallExpression[callee.name='takeUntilDestroy']:has(ThisExpression))) Decorator[expression.callee.name='Destroyable']",
+            "message": "'@Destroyable()' is added, but 'takeUntilDestroy(this)' isn't used"
+          },
+          {
+            "selector": "MethodDefinition[key.name='constructor'] Identifier[name='subscribe']",
+            "message": "Do not subscribe inside a `constructor`"
+          },
+          {
+            "selector": "MethodDefinition[key.name='ngOnInit']:has(ExpressionStatement:has(Identifier[name='subscribe']) ~ ExpressionStatement:has(Identifier[name='subscribe'])) ExpressionStatement Identifier[name='subscribe']",
+            "message": "If you have several side effects in `ngOnInit`, combine them."
+          }
+        ],
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "rxjs/no-exposed-subjects": [
+          "error",
+          { "allowProtected": true }
+        ],
+        "rxjs/finnish": [
+          "error",
+          {
+            "functions": false,
+            "methods": false,
+            "names": {
+              "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate)$": false
+            },
+            "parameters": true,
+            "properties": true,
+            "strict": true,
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true
+          }
+        ],
+        "rxjs/no-ignored-replay-buffer": "error",
+        "rxjs/no-internal": "error",
+        "rxjs/no-nested-subscribe": "error",
+        "rxjs/no-unbound-methods": "error",
+        "rxjs/throw-error": "error",
+        "rxjs/no-async-subscribe": "error",
+        "rxjs/no-create": "error",
+        "rxjs/no-ignored-observable": "error",
+        "rxjs/no-implicit-any-catch": "error",
+        "rxjs/no-index": "error",
+        "rxjs/no-sharereplay": [
+          "error",
+          {
+            "allowConfig": true
+          }
+        ],
+        "rxjs/no-subclass": "error",
+        "rxjs/no-subject-value": "error",
+        "rxjs/no-unsafe-takeuntil": [
+          "error",
+          {
+              "alias": ["takeUntilDestroy"]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "linebreak-style": "off"
+      }
+    },
+    {
+      "files": ["*.dto.ts", "*.mapper.ts"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "TSPropertySignature[readonly=undefined]",
+            "message": "Missing 'readonly' modifier for the DTO property."
+          },
+          {
+            "selector": "TSPropertySignature TSTypeAnnotation[typeAnnotation.type='TSArrayType']",
+            "message": "Missing 'readonly' type modifier for array."
+          }
+        ],
+        "@typescript-eslint/naming-convention": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": ["@angular-eslint/template"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/button-has-type": [
+          "error"
+        ]
+      }
+    },
+    {
+      "files": ["*.component.ts"],
+      "extends": ["plugin:@angular-eslint/template/process-inline-templates"],
+      "plugins": ["rxjs"],
+      "rules": {
+        "rxjs/no-exposed-subjects": "off"
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "max-lines-per-function": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "@angular-eslint/use-component-selector": "off",
+        "jsdoc/require-jsdoc": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ]
+}

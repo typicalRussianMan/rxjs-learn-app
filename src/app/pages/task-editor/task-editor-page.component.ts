@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { TaskService } from '../../core/services/task.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { shareReplay, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { shareReplay, switchMap } from 'rxjs';
+
+import { TaskService } from '../../core/services/task.service';
+
 import { TaskMarkdownComponent } from './components/task-markdown/task-markdown.component';
 
 /** Task editor page. */
@@ -15,7 +17,7 @@ import { TaskMarkdownComponent } from './components/task-markdown/task-markdown.
     RouterLink,
   ],
   templateUrl: './task-editor-page.component.html',
-  styleUrl: './task-editor-page.component.css'
+  styleUrl: './task-editor-page.component.css',
 })
 export class TaskEditorPageComponent {
 

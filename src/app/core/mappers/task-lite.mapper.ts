@@ -1,8 +1,11 @@
-import { Injectable } from "@angular/core";
-import { TaskLiteDto } from "../dtos/task-lite.dto";
-import { TaskLite } from "../models/task-lite";
-import { IMapperFromDto } from "./mapper";
+import { Injectable } from '@angular/core';
 
+import { TaskLiteDto } from '../dtos/task-lite.dto';
+import { TaskLite } from '../models/task-lite';
+
+import { IMapperFromDto } from './mapper';
+
+/** Task lite mapper. */
 @Injectable({ providedIn: 'root' })
 export class TaskLiteMapper implements IMapperFromDto<TaskLiteDto, TaskLite> {
 

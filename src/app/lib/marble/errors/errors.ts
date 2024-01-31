@@ -13,7 +13,7 @@ export class MarbleInputOverflowError extends MarbleError {
 export class InputOnlyMarbleError extends MarbleError {
 
   public constructor() {
-    super('Can\'t add an output for `InputOnlyMarble`')
+    super('Can\'t add an output for `InputOnlyMarble`');
   }
 }
 
@@ -21,6 +21,6 @@ export class InputOnlyMarbleError extends MarbleError {
 export class OutputOnlyMarbleError extends MarbleError {
 
   public constructor() {
-    super('Can\'t add an input for `OutputOnlyMarble`')
+    super('Can\'t add an input for `OutputOnlyMarble`');
   }
 }

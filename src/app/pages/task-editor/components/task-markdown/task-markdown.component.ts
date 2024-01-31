@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { TaskContent, TaskContentType } from '../../../../core/models/task-content';
 
 /** Task markdown component. */
@@ -7,7 +8,7 @@ import { TaskContent, TaskContentType } from '../../../../core/models/task-conte
   standalone: true,
   imports: [],
   templateUrl: './task-markdown.component.html',
-  styleUrl: './task-markdown.component.css'
+  styleUrl: './task-markdown.component.css',
 })
 export class TaskMarkdownComponent {
 

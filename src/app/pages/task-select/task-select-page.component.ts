@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
-import { TaskLite } from '../../core/models/task-lite';
-import { TaskService } from '../../core/services/task.service';
 import { AsyncPipe } from '@angular/common';
-import { ExpansionPanelComponent } from '../../components/expansion-panel/expansion-panel.component';
 import { Router } from '@angular/router';
 
+import { TaskLite } from '../../core/models/task-lite';
+import { TaskService } from '../../core/services/task.service';
+import { ExpansionPanelComponent } from '../../components/expansion-panel/expansion-panel.component';
+
+/** Task select page. */
 @Component({
   selector: 'rla-task-select-page',
   standalone: true,
@@ -33,7 +35,11 @@ export class TaskSelectPageComponent {
     return this.taskService.isTaskSolved(id);
   }
 
+  /**
+   * Redirects to task.
+   * @param id Task ID.
+   */
   public redirectTo(id: string): void {
-    this.router.navigate(['tasks', id])
+    this.router.navigate(['tasks', id]);
   }
 }
