@@ -1,5 +1,6 @@
-import { OutputOnlyMarbleError } from "../errors/errors";
-import { Marble } from "./marble";
+import { OutputOnlyMarbleError } from '../errors/errors';
+
+import { Marble } from './marble';
 
 /** Output-only marble. */
 export abstract class OutputOnlyMarble<TConf extends object = {}> extends Marble<TConf> {
