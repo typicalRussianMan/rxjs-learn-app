@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { HeaderComponent } from '../components/header/header.component';
 
+/** Base page component. */
 @Component({
   selector: 'rla-base-page',
   standalone: true,
