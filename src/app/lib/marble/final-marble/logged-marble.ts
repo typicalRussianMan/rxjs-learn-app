@@ -1,25 +1,29 @@
-import { NEVER, tap } from "rxjs";
-import { InputOnlyMarble } from "../basic-marbles/input-only-marble";
-import { neverIfEmptyInputs } from "../utils/never-if-empy-inputs";
+import { tap } from 'rxjs';
 
-interface ILoggedMarbleConfiguration {
+import { InputOnlyMarble } from '../basic-marbles/input-only-marble';
+import { neverIfEmptyInputs } from '../utils/never-if-empy-inputs';
+
+type LoggedMarbleConfiguration = {
 
   /** Tag. */
-  readonly tag: string;
-}
+  onData(value: unknown): void;
+};
 
 /** Marble that emulates `.pipe( tap(console.log) )` rxjs operator. */
-export class LoggedMarble extends InputOnlyMarble<ILoggedMarbleConfiguration> {
+export class LoggedMarble extends InputOnlyMarble<LoggedMarbleConfiguration> {
 
-  public configuration: ILoggedMarbleConfiguration = {
-    tag: '',
+  /** @inheritdoc */
+  public configuration: LoggedMarbleConfiguration = {
+    onData() {
+      return void 0;
+    },
   };
 
-  public constructor(tag: string) {
-    super(neverIfEmptyInputs(inputs => inputs[0].currentObservable.pipe(
-      tap(value => console.log(this.configuration.tag, value))
+  public constructor(onData: (value: unknown) => void) {
+    super(neverIfEmptyInputs(inputs => inputs[0].currentObservable$.pipe(
+      tap(value => this.configuration.onData(value)),
     )));
 
-    this.modifyConfig({ tag });
+    this.modifyConfig({ onData });
   }
 }

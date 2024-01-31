@@ -1,6 +1,6 @@
-import { combineLatest } from "rxjs";
-import { Marble } from "../basic-marbles/marble";
+import { combineLatest } from 'rxjs';
 
+import { Marble } from '../basic-marbles/marble';
 
 /** Marble that emulates `combineLatest` rxjs operator. */
 export class CombineLatestMarble extends Marble {
@@ -9,6 +9,6 @@ export class CombineLatestMarble extends Marble {
   public configuration = {};
 
   public constructor() {
-    super(inputs => combineLatest([...inputs.map(input => input.currentObservable)]));
+    super(inputs => combineLatest([...inputs.map(input => input.currentObservable$)]));
   }
 }

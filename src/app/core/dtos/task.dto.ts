@@ -17,4 +17,4 @@ export type TaskDto = {
 
   /** ID of the previous task. */
   readonly previousTaskId?: string;
-}
+};

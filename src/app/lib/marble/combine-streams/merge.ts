@@ -1,5 +1,6 @@
-import { merge } from "rxjs";
-import { Marble } from "../basic-marbles/marble";
+import { merge } from 'rxjs';
+
+import { Marble } from '../basic-marbles/marble';
 
 /** Marble that emulates `merge` rxjs operator. */
 export class MergeMarble extends Marble {
@@ -8,6 +9,6 @@ export class MergeMarble extends Marble {
   public configuration = {};
 
   public constructor() {
-    super(inputs => merge(...inputs.map(input => input.currentObservable)));
+    super(inputs => merge(...inputs.map(input => input.currentObservable$)));
   }
 }

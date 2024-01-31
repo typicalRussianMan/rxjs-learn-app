@@ -1,17 +1,18 @@
-import { interval } from "rxjs";
-import { OutputOnlyMarble } from "../basic-marbles/output-only-marble";
+import { interval } from 'rxjs';
 
-interface IIntervalMarbleConfiguration {
+import { OutputOnlyMarble } from '../basic-marbles/output-only-marble';
+
+type IntervalMarbleConfiguration = {
 
   /** The interval size in milliseconds. */
   readonly period: number;
-}
+};
 
 /** Marble that emulates `interval` rxjs operator. */
-export class IntervalMarble extends OutputOnlyMarble<IIntervalMarbleConfiguration> {
+export class IntervalMarble extends OutputOnlyMarble<IntervalMarbleConfiguration> {
 
   /** @inheritdoc */
-  public configuration: IIntervalMarbleConfiguration = {
+  public configuration: IntervalMarbleConfiguration = {
     period: 1000,
   };
 

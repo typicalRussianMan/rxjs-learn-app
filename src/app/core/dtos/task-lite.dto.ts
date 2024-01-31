@@ -9,4 +9,4 @@ export type TaskLiteDto = {
 
   /** Description. */
   readonly description: string;
-}
+};
