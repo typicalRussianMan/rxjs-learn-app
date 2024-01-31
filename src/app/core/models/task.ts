@@ -1,4 +1,4 @@
-import { TaskContent } from "./task-content";
+import { TaskContent } from './task-content';
 
 /** Task. */
 export class Task {

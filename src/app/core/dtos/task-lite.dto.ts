@@ -1,5 +1,5 @@
 /** Task lite DTO. */
-export interface TaskLiteDto {
+export type TaskLiteDto = {
 
   /** ID. */
   readonly id: string;

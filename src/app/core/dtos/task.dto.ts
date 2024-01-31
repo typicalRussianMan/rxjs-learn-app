@@ -1,7 +1,7 @@
-import { TaskContentDto } from "./task-content.dto";
+import { TaskContentDto } from './task-content.dto';
 
 /** Task DTO. */
-export interface TaskDto {
+export type TaskDto = {
 
   /** Name. */
   readonly name: string;

@@ -1,7 +1,9 @@
-import { Injectable } from "@angular/core";
-import { TaskContentDto, TaskContentTypeDto } from "../dtos/task-content.dto";
-import { TaskContent, TaskContentType } from "../models/task-content";
-import { IMapperFromDto } from "./mapper";
+import { Injectable } from '@angular/core';
+
+import { TaskContentDto, TaskContentTypeDto } from '../dtos/task-content.dto';
+import { TaskContent, TaskContentType } from '../models/task-content';
+
+import { IMapperFromDto } from './mapper';
 
 /** Task content mapper. */
 @Injectable({ providedIn: 'root' })
@@ -23,14 +25,9 @@ export class TaskContentMapper implements IMapperFromDto<TaskContentDto, TaskCon
       };
     }
 
-    if (dto.type === TaskContentTypeDto.Heading) {
-      return {
-        type: TaskContentType.Heading,
-        text: dto.text,
-      }
-    }
-
-    throw new Error(`Unknown content type: ${(dto as any).type}`);
+    return {
+      type: TaskContentType.Heading,
+      text: dto.text,
+    };
   }
 }
-

@@ -1,3 +1,4 @@
+/** Task lite. */
 export class TaskLite {
 
   /** ID. */
