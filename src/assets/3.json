@@ -11,6 +11,10 @@
       "text": "In this task we learn combine latest operator"
     },
     {
+      "type": "Text",
+      "text": "text 123 qwe 123"
+    },
+    {
       "type": "Image",
       "src": "https://reactivex.io/rxjs/img/combineLatest.png"
     },

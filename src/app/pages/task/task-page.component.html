@@ -1,12 +1,11 @@
 <div class="full-screen-container">
 
-  <div class="task-info">
-    <div class="app-info">
-      <img class="app-info__img" src="/assets/rx-logo.png" alt="RxJS Logo">
-      <h1 class="app-info__name">RxJS Learn</h1>
-    </div>
-
-    @if (task$ | async; as task) {
+  @if (task$ | async; as task) {
+    <div class="task-info">
+      <div class="app-info">
+        <img class="app-info__img" src="/assets/rx-logo.png" alt="RxJS Logo">
+        <h1 class="app-info__name">RxJS Learn</h1>
+      </div>
       <div class="task-change">
         <a
           [class.disabled]="task.previousTaskId === null"
@@ -21,9 +20,10 @@
           {{'Next task >>'}}
         </a>
       </div>
-
       <rla-task-markdown [taskContent]="task.content" />
-    }
+    </div>
 
-  </div>
+    <rla-task-editor [task]="task" />
+  }
+
 </div>

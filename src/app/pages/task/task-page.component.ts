@@ -6,20 +6,22 @@ import { shareReplay, switchMap } from 'rxjs';
 import { TaskService } from '../../core/services/task.service';
 
 import { TaskMarkdownComponent } from './components/task-markdown/task-markdown.component';
+import { TaskEditorComponent } from './components/task-editor/task-editor.component';
 
 /** Task editor page. */
 @Component({
-  selector: 'rla-task-editor-page',
+  selector: 'rla-task-page',
   standalone: true,
   imports: [
     AsyncPipe,
     TaskMarkdownComponent,
     RouterLink,
+    TaskEditorComponent,
   ],
-  templateUrl: './task-editor-page.component.html',
-  styleUrl: './task-editor-page.component.css',
+  templateUrl: './task-page.component.html',
+  styleUrl: './task-page.component.css',
 })
-export class TaskEditorPageComponent {
+export class TaskPageComponent {
 
   private readonly taskService = inject(TaskService);
 
